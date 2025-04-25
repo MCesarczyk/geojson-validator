@@ -1,5 +1,9 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import valid from "../fixtures/valid.json";
+import multi from "../fixtures/multi.json";
+import intersecting from "../fixtures/intersecting.json";
+import { Feature, Polygon } from "geojson";
 
 const options = [
   { name: "valid", label: "Valid" },
@@ -7,7 +11,17 @@ const options = [
   { name: "intersecting", label: "Self-intersecting polygon" },
 ];
 
-export const Form = () => {
+const fixtures = {
+  valid: valid,
+  multi: multi,
+  intersecting: intersecting,
+};
+
+interface Props {
+  setGeojson: (geojson: Feature<Polygon>) => void;
+}
+
+export const Form = ({ setGeojson }: Props) => {
   const [selection, setSelection] = useState("valid");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +30,9 @@ export const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Form submitted with selection:", selection);
+    setGeojson(
+      fixtures[selection as keyof typeof fixtures] as Feature<Polygon>
+    );
   };
 
   return (

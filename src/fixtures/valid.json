@@ -1,0 +1,49 @@
+{
+  "id": 2119,
+  "type": "Feature",
+  "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+          [
+              [
+                  -56.037039363826366,
+                  51.48889484433234
+              ],
+              [
+                  -56.037039363826366,
+                  51.316851154815055
+              ],
+              [
+                  -55.54382529321959,
+                  51.316851154815055
+              ],
+              [
+                  -55.54382529321959,
+                  51.48889484433234
+              ],
+              [
+                  -56.037039363826366,
+                  51.48889484433234
+              ]
+          ]
+      ]
+  },
+  "properties": {
+      "name": "saint-anthony",
+      "display_name": "Saint Anthony",
+      "description": "Uploaded with AOI uploader via Terraeye",
+      "created_date": "2024-09-05T21:26:17.709151Z",
+      "active": true,
+      "crs": 4326,
+      "srid": 4326,
+      "area": 656.95,
+      "parent_id": null,
+      "status": "A",
+      "type": "P",
+      "tags": null,
+      "environments": [
+          "surface_mineralization"
+      ],
+      "deposits": []
+  }
+}

@@ -2,3 +2,9 @@
   padding: 2rem 0;
   height: 100%;
 }
+
+.main {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+}
