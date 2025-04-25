@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@turf/boolean-crosses": "^7.2.0",
+    "@turf/boolean-equal": "^7.2.0",
+    "@turf/boolean-intersects": "^7.2.0",
+    "@turf/turf": "^7.2.0",
     "@types/geojson": "^7946.0.16",
     "classnames": "^2.5.1",
     "geojson-validation": "^1.0.2",

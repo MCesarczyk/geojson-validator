@@ -5,6 +5,7 @@ import styles from "./App.module.css";
 import { Form } from "./form";
 import { Preview } from "./preview";
 import { Result } from "./result";
+import { validatePolygon } from "./validatePolygon";
 
 const isPolygon = (testedObject: Feature) => {
   try {
@@ -25,6 +26,7 @@ export function App() {
     if (geojson && isPolygon(geojson)) {
       setMessage("The GeoJSON object is a polygon.");
       setValid(true);
+      validatePolygon(geojson);
     } else {
       setMessage("The GeoJSON object is not a polygon.");
       setValid(false);
