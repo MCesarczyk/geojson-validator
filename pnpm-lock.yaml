@@ -11,6 +11,12 @@ importers:
       '@types/geojson':
         specifier: ^7946.0.16
         version: 7946.0.16
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
+      geojson-validation:
+        specifier: ^1.0.2
+        version: 1.0.2
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4
@@ -27,6 +33,9 @@ importers:
       '@eslint/js':
         specifier: ^9.22.0
         version: 9.25.1
+      '@types/geojson-validation':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.17
@@ -532,6 +541,9 @@ packages:
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
 
+  '@types/geojson-validation@1.0.3':
+    resolution: {integrity: sha512-S+Ka75g23eK33jblC6u3Tc7GKrBfo0VuHhydPw9WdWRib7sGPAubUbNiUkdTrX9dl5F18/iD8ERzH31AYLFiKg==}
+
   '@types/geojson@7946.0.16':
     resolution: {integrity: sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==}
 
@@ -696,6 +708,9 @@ packages:
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
+
+  classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
   cli-cursor@3.1.0:
     resolution: {integrity: sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==}
@@ -960,6 +975,10 @@ packages:
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
+
+  geojson-validation@1.0.2:
+    resolution: {integrity: sha512-K5jrJ4wFvORn2pRKeg181LL0QPYuEKn2KHPvfH1m2QtFlAXFLKdseqt0XwBM3ELOY7kNM1fglRQ6ZwUQZ5S00A==}
+    hasBin: true
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -1966,6 +1985,8 @@ snapshots:
 
   '@types/estree@1.0.7': {}
 
+  '@types/geojson-validation@1.0.3': {}
+
   '@types/geojson@7946.0.16': {}
 
   '@types/json-schema@7.0.15': {}
@@ -2170,6 +2191,8 @@ snapshots:
     optional: true
 
   chardet@0.7.0: {}
+
+  classnames@2.5.1: {}
 
   cli-cursor@3.1.0:
     dependencies:
@@ -2484,6 +2507,8 @@ snapshots:
     optional: true
 
   gensync@1.0.0-beta.2: {}
+
+  geojson-validation@1.0.2: {}
 
   glob-parent@5.1.2:
     dependencies:
