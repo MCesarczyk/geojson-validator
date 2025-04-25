@@ -25,7 +25,7 @@ export const Form = ({ setGeojson }: Props) => {
   const [selection, setSelection] = useState("valid");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelection(event.target.name);
+    setSelection(event.target.id);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +42,7 @@ export const Form = ({ setGeojson }: Props) => {
           <li key={option.name}>
             <input
               type="radio"
-              name={option.name}
+              name="geojson"
               id={option.name}
               checked={selection === option.name}
               onChange={handleChange}
