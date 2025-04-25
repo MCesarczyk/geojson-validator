@@ -5,10 +5,4 @@
   text-align: center;
 }
 
-.MapContainer {
-  height: 85vh;
-  width: 100%;
-  z-index: 100;
-  cursor: crosshair;
-  background-color: #525252;
-}
+
