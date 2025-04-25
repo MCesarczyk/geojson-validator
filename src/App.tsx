@@ -1,21 +1,19 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "./App.css";
+import { useState } from "react";
+import { Feature, Polygon } from "geojson";
+import styles from "./App.module.css";
+import { Form } from "./form";
+import { Preview } from "./preview";
 
 export function App() {
+  const [geojson, setGeojson] = useState<Feature<Polygon>>();
+
   return (
-    <>
+    <div className={styles.wrapper}>
       <h1>Geojson Validator</h1>
-      <MapContainer className="MapContainer" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </>
+      <main className={styles.main}>
+        <Form {...{ setGeojson }} />
+        <Preview {...{ geojson }} />
+      </main>
+    </div>
   );
 }
