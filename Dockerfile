@@ -18,11 +18,14 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-COPY --from=development /usr/src/app/node_modules ./node_modules
+RUN groupadd --gid 1003 gvuser \
+  && useradd --uid 1003 --gid gvuser --shell /bin/bash --create-home gvuser
+
+COPY --chown=gvuser:gvuser --from=development /usr/src/app/node_modules ./node_modules
 
 RUN npm i -g pnpm && pnpm i --prod && pnpm i -D typescript
 
-COPY . .
+COPY --chown=gvuser:gvuser . .
 
 RUN pnpm build
 
@@ -38,6 +41,12 @@ COPY --from=builder /usr/src/app/.env ./.env
 
 RUN npm i -g serve
 
+RUN addgroup -S gvuser \
+  && adduser -S gvuser -G gvuser \
+  && chown -R gvuser:gvuser /usr/src/app
+
 EXPOSE 3000
+
+USER gvuser
 
 CMD ["serve", "-s", "dist"]
