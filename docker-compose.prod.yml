@@ -8,4 +8,4 @@ services:
     environment:
       NODE_ENV: development
     ports:
-      - 3040:3001
+      - 3040:3000
