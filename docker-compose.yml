@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: gv-dev
+    image: gv-dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3030:3000
