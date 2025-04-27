@@ -33,11 +33,7 @@ FROM node:23.11.0-alpine3.21 AS production
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/dist ./dist
-COPY --from=builder /usr/src/app/public ./public
-COPY --from=builder /usr/src/app/.env ./.env
 
 RUN npm i -g serve
 

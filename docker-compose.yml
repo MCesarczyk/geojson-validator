@@ -1,5 +1,6 @@
 services:
   app-dev:
+    restart: always
     container_name: gv-dev
     image: gv-dev
     build:
