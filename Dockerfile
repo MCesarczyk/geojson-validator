@@ -10,7 +10,7 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["pnpm", "start"]
+CMD ["pnpm", "dev"]
 
 FROM node:23.11.0-slim AS builder
 
