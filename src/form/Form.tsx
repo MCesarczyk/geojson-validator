@@ -68,13 +68,12 @@ export const Form = ({ setGeojson }: Props) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (selection) {
+    if (uploadedGeojson) {
+      setGeojson(uploadedGeojson);
+    } else if (selection) {
       setGeojson(
         fixtures[selection as keyof typeof fixtures] as Feature<Polygon>
       );
-    }
-    if (uploadedGeojson) {
-      setGeojson(uploadedGeojson);
     }
   };
 
