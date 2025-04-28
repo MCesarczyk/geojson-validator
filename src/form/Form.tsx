@@ -37,12 +37,17 @@ export const Form = ({ setGeojson }: Props) => {
   };
 
   const handleFileUpload = (file: string | ArrayBuffer) => {
-    if (typeof file === "string") {
-      setUploadedGeojson(JSON.parse(file));
+    try {
+      if (typeof file === "string") {
+        setUploadedGeojson(JSON.parse(file));
+      }
+      setUploadedGeojson(
+        JSON.parse(new TextDecoder().decode(file as ArrayBuffer))
+      );
+    } catch (error) {
+      alert("Error parsing file:" + error);
+      setUploadedGeojson(undefined);
     }
-    setUploadedGeojson(
-      JSON.parse(new TextDecoder().decode(file as ArrayBuffer))
-    );
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -80,7 +85,11 @@ export const Form = ({ setGeojson }: Props) => {
         <h2>Or paste your own GeoJSON:</h2>
         <Dropzone saveFile={handleFileUpload} />
       </fieldset>
-      <button type="submit" className={styles.button} disabled={!selection && !uploadedGeojson}>
+      <button
+        type="submit"
+        className={styles.button}
+        disabled={!selection && !uploadedGeojson}
+      >
         Validate
       </button>
     </form>
