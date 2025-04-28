@@ -17,3 +17,10 @@
     margin-left: 0.5rem;
   }
 }
+
+.fieldset {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
