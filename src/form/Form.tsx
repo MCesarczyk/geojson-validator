@@ -31,19 +31,27 @@ interface Props {
 export const Form = ({ setGeojson }: Props) => {
   const [selection, setSelection] = useState<string | undefined>();
   const [uploadedGeojson, setUploadedGeojson] = useState<Feature<Polygon>>();
+  const [filename, setFilename] = useState<string | undefined>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelection(event.target.id);
   };
 
-  const handleFileUpload = (file: string | ArrayBuffer) => {
+  const handleUpload = (payload: {
+    file: string | ArrayBuffer;
+    name: string;
+  }) => {
+    const { file, name } = payload;
     try {
       if (typeof file === "string") {
         setUploadedGeojson(JSON.parse(file));
+        setFilename(name);
+        return;
       }
       setUploadedGeojson(
         JSON.parse(new TextDecoder().decode(file as ArrayBuffer))
       );
+      setFilename(name);
     } catch (error) {
       alert("Error parsing file:" + error);
       setUploadedGeojson(undefined);
@@ -83,7 +91,7 @@ export const Form = ({ setGeojson }: Props) => {
       </fieldset>
       <fieldset className={styles.fieldset}>
         <h2>Or paste your own GeoJSON:</h2>
-        <Dropzone saveFile={handleFileUpload} />
+        <Dropzone {...{ handleUpload, filename }} />
       </fieldset>
       <button
         type="submit"
