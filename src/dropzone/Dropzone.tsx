@@ -4,10 +4,11 @@ import { useDropzone } from "react-dropzone";
 interface Props {
   handleUpload: (payload: { file: string | ArrayBuffer; name: string }) => void;
   handleError?: (error: string) => void;
+  error?: string;
   filename?: string;
 }
 
-export const Dropzone = ({ handleUpload, handleError, filename }: Props) => {
+export const Dropzone = ({ handleUpload, handleError, error, filename }: Props) => {
   const onDrop = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (acceptedFiles: any[]) => {
@@ -40,7 +41,7 @@ export const Dropzone = ({ handleUpload, handleError, filename }: Props) => {
     <div {...getRootProps()}>
       <input {...getInputProps()} />
       <p>
-        {filename || "Drag 'n' drop some files here, or click to select files"}
+        {filename || error || "Drag 'n' drop some files here, or click to select files"}
       </p>
     </div>
   );

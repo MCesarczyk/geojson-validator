@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classNames from "classnames";
 import styles from "./Form.module.css";
 import nofeature from "../fixtures/nofeature.json";
 import linestring from "../fixtures/linestring.json";
@@ -32,6 +33,7 @@ export const Form = ({ setGeojson }: Props) => {
   const [selection, setSelection] = useState<string | undefined>();
   const [uploadedGeojson, setUploadedGeojson] = useState<Feature<Polygon>>();
   const [filename, setFilename] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelection(event.target.id);
@@ -43,19 +45,25 @@ export const Form = ({ setGeojson }: Props) => {
   }) => {
     const { file, name } = payload;
     try {
-      if (typeof file === "string") {
-        setUploadedGeojson(JSON.parse(file));
-        setFilename(name);
-        return;
-      }
       setUploadedGeojson(
-        JSON.parse(new TextDecoder().decode(file as ArrayBuffer))
+        JSON.parse(
+          typeof file === "string"
+            ? file
+            : new TextDecoder().decode(file as ArrayBuffer)
+        )
       );
       setFilename(name);
+      setError(undefined);
     } catch (error) {
-      alert("Error parsing file:" + error);
+      console.log("Error parsing file:" + error);
       setUploadedGeojson(undefined);
+      setFilename(undefined);
+      setError("Error parsing file");
     }
+  };
+
+  const handleError = (error: string) => {
+    setError(error);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -89,9 +97,14 @@ export const Form = ({ setGeojson }: Props) => {
           ))}
         </ul>
       </fieldset>
-      <fieldset className={styles.fieldset}>
+      <fieldset
+        className={classNames(
+          styles.fieldset,
+          error ? styles.fieldsetError : undefined
+        )}
+      >
         <h2>Or paste your own GeoJSON:</h2>
-        <Dropzone {...{ handleUpload, filename }} />
+        <Dropzone {...{ handleUpload, handleError, error, filename }} />
       </fieldset>
       <button
         type="submit"
