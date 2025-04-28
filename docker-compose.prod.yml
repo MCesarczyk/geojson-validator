@@ -1,0 +1,12 @@
+services:
+  app-prod:
+    restart: always
+    container_name: gv-prod
+    image: gv-prod
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3040:3000

@@ -1,0 +1,13 @@
+README.md
+LICENSE
+
+build
+dist
+node_modules
+
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+.git
+.DS_Store
